@@ -5,3 +5,7 @@ gem "sinatra"
 
 gem "rom-repository"
 gem "rom-sql"
+
+group :development, :test do
+  gem "pry"
+end
