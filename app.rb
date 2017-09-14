@@ -7,10 +7,10 @@ ROM.container(:sql, "sqlite::memory")
 
 module Domain
   class Book
-    attr_reader :id, :title, :price
+    attr_reader :id, :title, :price, :author
 
     def initialize(attrs)
-      @id, @title, @price = attrs.values_at(:id, :title, :price)
+      @id, @title, @price, @author = attrs.values_at(:id, :title, :price, :author)
     end
   end
 
@@ -28,12 +28,16 @@ module Repo
     relations :authors
     commands :create, update: :by_pk
 
-    def query(conditions)
-      books.where(conditions).map_to(Domain::Book)
+    def by_id_with_author(id)
+      books
+        .by_pk(id)
+        .combine(one: { author: authors })
+        .map_to(Domain::Book)
+        .one
     end
 
-    def by_id_with_author(id)
-      books.by_pk(id).wrap_parent(author: authors).one
+    def query(conditions)
+      books.where(conditions).map_to(Domain::Book)
     end
 
     def all
@@ -115,6 +119,8 @@ class App < Sinatra::Base
     bookRepo.create(book_changeset)
 
     result = bookRepo.by_id_with_author(1)
+
+    # binding.pry
 
     body "hello"
   end
