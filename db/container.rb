@@ -12,7 +12,7 @@ class InfrastructureContainer
       end
 
       config.relation(:books) do
-        schema(:books, infer: true) do
+        schema(infer: true) do
           associations do
             belongs_to :author
           end
