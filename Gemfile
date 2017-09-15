@@ -5,6 +5,11 @@ gem "sinatra"
 
 gem "rom-repository"
 gem "rom-sql"
+gem "sqlite3"
+
+gem "rake"
+
+gem "dry-auto_inject"
 
 group :development, :test do
   gem "pry"
