@@ -1,7 +1,7 @@
 class InfrastructureContainer
   extend Dry::Container::Mixin
 
-  register "sqlite_adapter" do
+  register "db_adapter" do
     ROM.container(:sql, "sqlite://app.db") do |config|
       config.relation(:authors) do
         schema(infer: true) do

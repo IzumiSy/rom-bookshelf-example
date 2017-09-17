@@ -1,9 +1,18 @@
+require_relative "../db/container"
 require_relative "../models/book"
+
+Import = Dry::AutoInject(InfrastructureContainer)
 
 module Repository
   class Book < ROM::Repository[:books]
+    include Import["db_adapter"]
+
     relations :authors
     commands :create, update: :by_pk
+
+    def initialize(_args)
+      super(_args[:db_adapter])
+    end
 
     def by_id_with_author(id)
       books
