@@ -1,11 +1,13 @@
 require "sinatra/base"
 require "rom-repository"
 require "dry-auto_inject"
-require "jsonapi-serialiers"
+require "jsonapi-serializers"
 require "pry" if ENV["RACK_ENV"] === "development"
 require_relative "db/container"
 require_relative "repositories/author_repository"
 require_relative "repositories/book_repository"
+require_relative "serializers/base_serializer"
+require_relative "serializers/book_serializer"
 
 class App < Sinatra::Base
   get "/" do
@@ -32,10 +34,9 @@ class App < Sinatra::Base
       .associate(author)
     bookRepo.create(book_changeset)
 
-    result = bookRepo.by_id_with_author(1)
+    book = bookRepo.by_id_with_author(1)
 
-    # binding.pry
-
-    body "hello"
+    content_type :json
+    body JSONAPI::Serializer.serialize(book).to_json
   end
 end
