@@ -11,10 +11,19 @@ class InfrastructureContainer
         end
       end
 
+      config.relation(:shelves) do
+        schema(infer: true) do
+          associations do
+            has_many :books
+          end
+        end
+      end
+
       config.relation(:books) do
         schema(infer: true) do
           associations do
             belongs_to :author
+            belongs_to :shelf
           end
         end
       end

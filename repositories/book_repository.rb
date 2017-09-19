@@ -8,6 +8,7 @@ module Repository
     include Import["db_adapter"]
 
     relations :authors
+    relations :shelves
     commands :create, update: :by_pk
 
     def initialize(_args)
