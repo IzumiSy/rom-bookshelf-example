@@ -1,8 +1,5 @@
-require "dry-auto_inject"
 require_relative "../db/container"
 require_relative "../models/author"
-
-Import = Dry::AutoInject(InfrastructureContainer)
 
 module Repository
   class Author < ROM::Repository[:authors]

@@ -1,8 +1,6 @@
 require_relative "../db/container"
 require_relative "../models/book"
 
-Import = Dry::AutoInject(InfrastructureContainer)
-
 module Repository
   class Book < ROM::Repository[:books]
     include Import["db_adapter"]

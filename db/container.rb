@@ -30,3 +30,5 @@ class InfrastructureContainer
     end
   end
 end
+
+Import = Dry::AutoInject(InfrastructureContainer)
