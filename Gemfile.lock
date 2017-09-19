@@ -40,6 +40,7 @@ GEM
     i18n (0.8.6)
     ice_nine (0.11.2)
     inflecto (0.0.2)
+    json (2.0.2)
     jsonapi-serializers (1.0.0)
       activesupport
     method_source (0.8.2)
@@ -94,6 +95,7 @@ PLATFORMS
 
 DEPENDENCIES
   dry-auto_inject
+  json
   jsonapi-serializers
   pry
   rake
