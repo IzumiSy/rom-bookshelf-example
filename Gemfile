@@ -11,6 +11,8 @@ gem "rake"
 
 gem "dry-auto_inject"
 
+gem "jsonapi-serializers"
+
 group :development, :test do
   gem "pry"
 end
