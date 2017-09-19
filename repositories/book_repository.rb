@@ -1,4 +1,3 @@
-require_relative "../db/container"
 require_relative "../models/book"
 
 module Repository

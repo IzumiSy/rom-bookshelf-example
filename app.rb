@@ -1,6 +1,8 @@
 require "sinatra/base"
 require "rom-repository"
+require "dry-auto_inject"
 require "pry" if ENV["RACK_ENV"] === "development"
+require_relative "db/container"
 require_relative "repositories/author_repository"
 require_relative "repositories/book_repository"
 
