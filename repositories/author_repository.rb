@@ -16,11 +16,16 @@ module Repository
     end
 
     def query(conditions)
-      authors.where(conditions).map_to(Domain::Author)
+      authors
+        .with_books
+        .where(conditions)
+        .map_to(Domain::Author)
     end
 
     def all
-      authors.map_to(Domain::Author)
+      authors
+        .with_books
+        .map_to(Domain::Author)
     end
   end
 end
