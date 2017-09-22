@@ -1,9 +1,9 @@
 module Domain
   class Author
-    attr_reader :id, :name, :books
+    attr_reader :id, :name
 
     def initialize(attrs)
-      @id, @name, @books = attrs.values_at(:id, :name, :books)
+      @id, @name = attrs.values_at(:id, :name)
     end
   end
 end

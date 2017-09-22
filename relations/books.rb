@@ -5,8 +5,4 @@ class Books < ROM::Relation[:sql]
       belongs_to :shelf
     end
   end
-
-  def with_author_id(author_id)
-    where(author_id: author_id)
-  end
 end

@@ -11,10 +11,9 @@ module Repository
       super(_args[:db_adapter])
     end
 
-    def by_id_with_books(id)
+    def by_id(id)
       authors
         .by_pk(id)
-        .combine(many: { books: books })
         .map_to(Domain::Author)
         .one
     end

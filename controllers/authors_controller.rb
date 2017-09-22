@@ -20,8 +20,7 @@ class AuthorsController < Sinatra::Base
   get '/authors/:id' do
     authorRepo = Repository::Author.new
 
-    author = authorRepo
-      .by_id_with_books(params[:id])
+    author = authorRepo.by_id(params[:id])
 
     body JSONAPI::Serializer
       .serialize(author)

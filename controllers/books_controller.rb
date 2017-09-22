@@ -23,6 +23,16 @@ class BooksController < Sinatra::Base
     status :created
   end
 
+  get "/books/:id" do
+    bookRepo = Repository::Book.new
+
+    book = bookRepo.by_id(params[:id])
+
+    body JSONAPI::Serializer
+      .serialize(book)
+      .to_json
+  end
+
   get "/books" do
     bookRepo = Repository::Book.new
 
