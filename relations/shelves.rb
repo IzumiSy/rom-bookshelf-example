@@ -5,5 +5,9 @@ module Relation
         has_many :books
       end
     end
+
+    def with_books
+      join(books)
+    end
   end
 end
