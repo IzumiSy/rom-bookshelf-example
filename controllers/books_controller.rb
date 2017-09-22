@@ -9,12 +9,7 @@ class BooksController < Sinatra::Base
   end
 
   post "/books" do
-    title = params[:title]
-    price = params[:price]
-    author_id = params[:author_id]
-
     bookRepo = Repository::Book.new
-    authorRepo = Repository::Author.new
 
     bookRepo.transaction do
       author = authorRepo.by_id(author_id)
