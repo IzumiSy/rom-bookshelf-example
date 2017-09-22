@@ -4,8 +4,4 @@ class Authors < ROM::Relation[:sql]
       has_many :books
     end
   end
-
-  def with_books
-    join(books)
-  end
 end
