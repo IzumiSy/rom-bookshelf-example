@@ -1,9 +1,9 @@
 module Domain
   class Book
-    attr_reader :id, :title, :price, :author
+    attr_reader :id, :title, :price
 
     def initialize(attrs)
-      @id, @title, @price, @author = attrs.values_at(:id, :title, :price, :author)
+      @id, @title, @price = attrs.values_at(:id, :title, :price)
     end
   end
 end
