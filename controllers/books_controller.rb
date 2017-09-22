@@ -1,4 +1,6 @@
 require_relative "../repositories/book_repository"
+require_relative "../repositories/author_repository"
+require_relative "../serializers/book_serializer"
 require_relative "../serializers/author_serializer"
 
 class BooksController < Sinatra::Base
@@ -12,12 +14,18 @@ class BooksController < Sinatra::Base
     author_id = params[:author_id]
 
     bookRepo = Repository::Book.new
+    authorRepo = Repository::Author.new
 
-    book_changeset = bookRepo
-      .changeset(title: title, price: price)
-      .map(:add_timestamps)
-      .associate(author)
-    bookRepo.create(book_changeset)
+    bookRepo.transaction do
+      author = authorRepo.by_id(author_id)
+
+      book_changeset = bookRepo
+        .changeset(title: title, price: price)
+        .map(:add_timestamps)
+        .associate(author)
+
+      bookRepo.create(book_changeset)
+    end
 
     status :created
   end
