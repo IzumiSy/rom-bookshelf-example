@@ -11,7 +11,11 @@ class BooksController < Sinatra::Base
     bookRepo = Repository::Book.new
     authorRepo = Repository::Author.new
 
-    author = authorRepo.by_id(author_id)
+    price = params[:price]
+    title = params[:title]
+    author = authorRepo.by_id(params[:author_id])
+
+    binding.pry
     book_changeset = bookRepo
       .changeset(title: title, price: price)
       .map(:add_timestamps)

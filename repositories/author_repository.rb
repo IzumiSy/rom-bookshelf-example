@@ -18,7 +18,7 @@ module Repository
     def by_id_with_books(id)
       authors
         .by_pk(id)
-        .aggregates(:books)
+        .with_books
         .map_to(Domain::Author)
         .one
     end
@@ -32,7 +32,7 @@ module Repository
 
     def all
       authors
-        .with_books
+        .combine(many: { books: books })
         .map_to(Domain::Author)
     end
   end
