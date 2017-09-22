@@ -3,7 +3,7 @@ ROM::SQL.migration do
     create_table :books do
       primary_key :id
       foreign_key :author_id, :authors, null: false
-      foreign_key :shelf_id, :shelves, null: false
+      foreign_key :shelf_id, :shelves
       column :title, String, null: false
       column :price, Integer, null: false
       column :created_at, DateTime, null: false
