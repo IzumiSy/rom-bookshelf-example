@@ -7,7 +7,7 @@ module Relation
     end
 
     def with_books
-      join(books)
+      join(:books)
     end
   end
 end
