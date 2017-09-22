@@ -1,7 +1,6 @@
 require_relative "../repositories/book_repository"
 require_relative "../repositories/author_repository"
 require_relative "../serializers/book_serializer"
-require_relative "../serializers/author_serializer"
 
 class BooksController < Sinatra::Base
   before do
@@ -10,6 +9,7 @@ class BooksController < Sinatra::Base
 
   post "/books" do
     bookRepo = Repository::Book.new
+    authorRepo = Repository::Author.new
 
     bookRepo.transaction do
       author = authorRepo.by_id(author_id)
