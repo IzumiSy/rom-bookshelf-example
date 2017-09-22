@@ -11,11 +11,8 @@ module Repository
       super(_args[:db_adapter])
     end
 
-    def by_id(author_id)
-      authors
-        .by_pk(author_id)
-        .map_to(Domain::Author)
-        .one
+    def by_id(id)
+      authors.by_pk(id).one
     end
 
     def query(conditions)
