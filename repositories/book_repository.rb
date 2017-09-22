@@ -12,10 +12,6 @@ module Repository
       super(_args[:db_adapter])
     end
 
-    def by_id(id)
-      books.by_pk(id).one
-    end
-
     def query(conditions)
       books.where(conditions).map_to(Domain::Book)
     end

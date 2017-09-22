@@ -26,9 +26,7 @@ module Repository
     end
 
     def list
-      authors
-        .combine(many: { books: books })
-        .map_to(Domain::Author)
+      authors.map_to(Domain::Author)
     end
   end
 end
