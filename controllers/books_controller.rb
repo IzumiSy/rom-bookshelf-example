@@ -11,16 +11,13 @@ class BooksController < Sinatra::Base
     bookRepo = Repository::Book.new
     authorRepo = Repository::Author.new
 
-    bookRepo.transaction do
-      author = authorRepo.by_id(author_id)
+    author = authorRepo.by_id(author_id)
+    book_changeset = bookRepo
+      .changeset(title: title, price: price)
+      .map(:add_timestamps)
+      .associate(author)
 
-      book_changeset = bookRepo
-        .changeset(title: title, price: price)
-        .map(:add_timestamps)
-        .associate(author)
-
-      bookRepo.create(book_changeset)
-    end
+    bookRepo.create(book_changeset)
 
     status :created
   end
