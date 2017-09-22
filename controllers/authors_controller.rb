@@ -17,6 +17,16 @@ class AuthorsController < Sinatra::Base
     status :created
   end
 
+  get '/authors/:id' do
+    authorRepo = Repository::Author.new
+
+    author = authorRepo.by_id_with_books(params[:id])
+
+    body JSONAPI::Serializer
+      .serialize(author)
+      .to_json
+  end
+
   get "/authors" do
     authorRepo = Repository::Author.new
 
