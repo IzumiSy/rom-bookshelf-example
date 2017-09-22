@@ -9,17 +9,14 @@ class BooksController < Sinatra::Base
 
   post "/books" do
     bookRepo = Repository::Book.new
-    authorRepo = Repository::Author.new
 
     price = params[:price]
     title = params[:title]
-    author = authorRepo.by_id(params[:author_id])
+    author_id = params[:author_id]
 
-    binding.pry
     book_changeset = bookRepo
-      .changeset(title: title, price: price)
+      .changeset(title: title, price: price, author_id: author_id)
       .map(:add_timestamps)
-      .associate(author)
 
     bookRepo.create(book_changeset)
 
