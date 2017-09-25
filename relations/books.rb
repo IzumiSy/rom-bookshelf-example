@@ -6,15 +6,11 @@ class Books < ROM::Relation[:sql]
     end
   end
 
-  def ids
-    select(:id)
+  def by_id(id)
+    where(id: id)
   end
 
-  def index
-    select(:id, :title, :price)
-  end
-
-  def index_with_timestamps
-    index.select_append(:created_at, :updated_at)
+  def available
+    where(is_available: true)
   end
 end
