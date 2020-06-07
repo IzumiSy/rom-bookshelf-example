@@ -16,5 +16,7 @@ gem "json"
 
 group :development, :test do
   gem "pry"
+
+  gem "test-unit"
   gem "rack-test"
 end

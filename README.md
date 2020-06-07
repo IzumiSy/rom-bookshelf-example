@@ -8,3 +8,8 @@ $ bundle exec rake db:migrate
 ```bash
 $ rackup
 ```
+
+### Test
+```bash
+$ bundle exec ruby spec/app_spec.rb
+```
