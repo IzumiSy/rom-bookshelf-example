@@ -56,7 +56,7 @@ GEM
       rack
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
-    rake (12.0.0)
+    rake (12.3.3)
     rom (3.3.1)
       concurrent-ruby (~> 1.0)
       dry-core (~> 0.3)
