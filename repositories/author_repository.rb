@@ -4,7 +4,7 @@ module Repository
   class Author < ROM::Repository[:authors]
     include Import["db_adapter"]
 
-    relations :books
+    # relations :books
     commands :create, update: :by_pk
 
     def initialize(_args)
