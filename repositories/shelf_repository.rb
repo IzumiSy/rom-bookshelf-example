@@ -2,7 +2,7 @@ module Repository
   class Shelf < ROM::Repository[:shelves]
     include Import["db_adapter"]
 
-    relations :books
+    # relations :books
     commands :create
 
     def initialize(_args)
