@@ -53,6 +53,8 @@ GEM
     rack (2.0.3)
     rack-protection (2.0.0)
       rack
+    rack-test (1.1.0)
+      rack (>= 1.0, < 3)
     rake (12.0.0)
     rom (3.3.1)
       concurrent-ruby (~> 1.0)
@@ -98,6 +100,7 @@ DEPENDENCIES
   json
   jsonapi-serializers
   pry
+  rack-test
   rake
   rom-repository
   rom-sql
@@ -105,4 +108,4 @@ DEPENDENCIES
   sqlite3
 
 BUNDLED WITH
-   1.14.6
+   1.17.2
