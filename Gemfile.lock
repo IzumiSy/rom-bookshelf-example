@@ -42,7 +42,7 @@ GEM
       concurrent-ruby (~> 1.0)
     ice_nine (0.11.2)
     inflecto (0.0.2)
-    json (2.0.2)
+    json (2.3.0)
     jsonapi-serializers (1.0.0)
       activesupport
     method_source (0.8.2)
